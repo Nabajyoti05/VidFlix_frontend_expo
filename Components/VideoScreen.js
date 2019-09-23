@@ -50,12 +50,12 @@ class VideoScreen extends React.Component {
             </View>
 
             <View style={{padding:5, alignItems:'center'}}>
-              <Text style={{fontSize:14, marginLeft:10, fontFamily:'Muli'}}>When police officer Sartaj Singh receives an anonymous tip about the location of criminal overlord Ganesh Gaitonde, he embarks on a chase around Mumbai in what becomes a dangerous cat-and-mouse game. Amidst the chaos, trappings of a corrupt underworld are revealed. After being removed from the Gaitonde case, Singh begins his own investigation as he works to save Mumbai from impending doom. Flashbacks reveal some of the crimes that Gaitonde has committed through the years.</Text>
+              <Text style={{fontSize:14, marginLeft:10}}>When police officer Sartaj Singh receives an anonymous tip about the location of criminal overlord Ganesh Gaitonde, he embarks on a chase around Mumbai in what becomes a dangerous cat-and-mouse game. Amidst the chaos, trappings of a corrupt underworld are revealed. After being removed from the Gaitonde case, Singh begins his own investigation as he works to save Mumbai from impending doom. Flashbacks reveal some of the crimes that Gaitonde has committed through the years.</Text>
             </View>
 
             <View style={{padding:5}}>
-              <Text style={{fontSize:14, marginLeft:10, fontWeight:'bold'}}>Starring</Text>
-              <Text style={{fontSize:14, marginLeft:10, fontFamily:'Muli'}}>Saif Ali Khan, Nawazuddin Siddiqui, Radhika Apte, Pankaj Tripathi</Text>
+              <Text style={{fontSize:14, marginLeft:10}}>Starring</Text>
+              <Text style={{fontSize:14, marginLeft:10}}>Saif Ali Khan, Nawazuddin Siddiqui, Radhika Apte, Pankaj Tripathi</Text>
             </View>
 
             <View style={{flex: 1, flexDirection:'row', alignItems: 'flex-start', backgroundColor:''}}>

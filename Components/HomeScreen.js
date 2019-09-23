@@ -1,11 +1,10 @@
 import React from 'react';
-import {createMaterialTopTabNavigator} from 'react-navigation';
-
+import {createMaterialTopTabNavigator, MaterialTopTabBar} from 'react-navigation';
+import { SafeAreaView, Dimensions } from 'react-native'
 import Featured from './TabScreens/Featured';
 import Movies from './TabScreens/Movie';
 import Series from './TabScreens/Series';
 import TvShows from './TabScreens/TvShows';
-
 
 const HomeScreen = createMaterialTopTabNavigator(
   {
@@ -20,7 +19,12 @@ const HomeScreen = createMaterialTopTabNavigator(
         backgroundColor: 'black'
       }
   },
-}
-);
+},
+{
+  initialLayout : {
+    height: Dimensions.get('window').height,
+    width: Dimensions.get('window').width,
+},
+});
 
   export default HomeScreen;

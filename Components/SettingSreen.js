@@ -59,7 +59,7 @@ class SettingScreen extends React.Component {
       color:'white',
       marginTop:20,
       fontSize:20,
-      fontFamily:'Muli'
+      // fontFamily:'Muli'
     },
     outerContainer:{
       flexDirection:'column',
@@ -83,13 +83,13 @@ class SettingScreen extends React.Component {
       borderBottomColor:'#b8b8b8'
     },
     text:{
-      fontFamily:'Muli',
+      // fontFamily:'Muli',
       fontSize:18,
       color:'white',
       padding:5
     },
     textDecor:{
-      fontFamily:'Muli',
+      // fontFamily:'Muli',
       fontSize:16,
       padding:5,
       color:'#d1d1d1'

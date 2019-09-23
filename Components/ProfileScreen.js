@@ -4,6 +4,7 @@ import {
   StyleSheet,
   Dimensions,
   ScrollView,
+  SafeAreaView
 } from "react-native";
 import { Video } from "expo-av";
 
@@ -13,17 +14,19 @@ export default class ProfileScreen extends PureComponent {
 
   render() {
     return (
-    <Video
-      source={{ uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4' }}
-      rate={1.0}
-      volume={1.0}
-      isMuted={false}
-      resizeMode="cover"
-      shouldPlay
-      isLooping
-      useNativeControls={true}
-      style={{ width: deviceWidth, height: 300 }}
-    />
+    <SafeAreaView>
+        <Video
+          source={{ uri: 'http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4' }}
+          rate={1.0}
+          volume={1.0}
+          isMuted={false}
+          resizeMode="contain"
+          shouldPlay
+          isLooping
+          useNativeControls={true}
+          style={{ width: deviceWidth, height: 300 }}
+        />
+    </SafeAreaView>
     );
   }
 }
