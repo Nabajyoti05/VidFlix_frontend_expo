@@ -1,6 +1,8 @@
 import React from 'react';
-import { Text, View, FlatList, StyleSheet, Image, ScrollView, TouchableOpacity, SafeAreaView } from 'react-native';
+import { Text, View, FlatList, StyleSheet, Image, ScrollView, TouchableOpacity } from 'react-native';
+import { StackActions } from 'react-navigation';
 
+import config from '../../config';
 
 class Featured extends React.Component {
   state={
@@ -8,127 +10,82 @@ class Featured extends React.Component {
   }
 
   componentDidMount(){
+    console.log("CDM", config.localhost_url)
 
-    fetch('/featureData', {
-      method: 'GET'
+    return fetch(config.localhost_url+'/all-features-fetch', {
+      method: 'GET',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      }
     })
     .then(response => response.json())
     .then((res) => {
       console.log("Response", res);
+      this.setState({
+        renderItems: res.check
+      })
     })
-
+    .catch(err => {
+      console.log(err)
+    })
   }
 
-  
+  onPressImage=(item)=>{
+
+    const pushAction = StackActions.push({
+      routeName: 'VideoProfileScreen',
+      params: {
+        item
+      },
+    });
+    
+    this.props.navigation.dispatch(pushAction);
+   
+  }
+
+
     render() {
-      console.log("state", this.state)
-      let images = this.state.renderItems.map((item, i) => {
-      console.log("Item", item.name);
+
+
+      let featuredList=null;
+      
+      if(this.state.renderItems.length !=0){
+
+      featuredList = this.state.renderItems.map((item,i) => {
+
         return (
-        
-          <View style={{padding:10, marginTop:10}} key={i}>
-            <TouchableOpacity>
-              <Image style={{width: 250, height: 170, borderRadius:5,backgroundColor:'grey'}} source={{uri: item.uri}} />
-            </TouchableOpacity>
+
+          <View style={{ flex: 1, flexDirection:'column', alignItems: 'flex-start', backgroundColor:'black', marginBottom:10, marginTop:10}} key={i}>              
+            <ScrollView horizontal> 
+            <FlatList
+              horizontal={true}
+              data={item}
+              renderItem={({item, index, separators}) => (
+                <View style={{padding:10, marginTop:10}} key={i}>
+                  <TouchableOpacity onPress={() => this.onPressImage(item)}>
+                    <Image style={{width: 250, height: 170, borderRadius:5,backgroundColor:'grey'}} source={{uri: item.vid_thumbs}} />
+                    <Text style={{color:'white'}}>{item.vid_name}</Text>
+                  </TouchableOpacity>
+                </View>
+              )}
+            />        
+            </ScrollView>
           </View>
-        
+
         )
       })
+    }
 
-      let images1 = this.state.renderItems.map((item, i) => {
-        console.log("Item", item.name);
-          return (
-          
-            <View style={{padding:10}} key={i}>
-              <TouchableOpacity onPress={() => this.props.navigation.navigate('profile')}>
-                <Image style={{width: 180, height: 100, borderRadius:5,backgroundColor:'grey'}} source={{uri: item.uri}} />
-              </TouchableOpacity>
-              {/* <Text style={{color:'white'}}>{item.name}</Text> */}
-            </View>
-          
-          )
-        })
+      console.log("state", this.state)
 
-        let images2 = this.state.renderItems.map((item, i) => {
-          console.log("Item", item.name);
-            return (
-            
-              <View style={{padding:10}} key={i}>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('profile')}>
-                  <Image style={{width: 120, height: 150, borderRadius:5,backgroundColor:'grey'}} source={{uri: item.uri}} />
-                </TouchableOpacity>
-                <Text style={{color:'white'}}>{item.name}</Text>
-              </View>
-            
-            )
-          })
 
-          let images3 = this.state.renderItems.map((item,i) => {
-            console.log("Item", item.name);
-              return (
-              
-                <View style={{padding:10}} key={i}>
-                  <TouchableOpacity onPress={() => this.props.navigation.navigate('profile')}>
-                    <Image style={{width: 120, height: 150, borderRadius:5,backgroundColor:'grey'}} source={{uri: item.uri}} />
-                  </TouchableOpacity>
-                  <Text style={{color:'white'}}>{item.name}</Text>
-                </View>
-              
-              )
-            })
-
-            let images4 = this.state.renderItems.map((item, i) => {
-              console.log("Item", item.name);
-                return (
-                
-                  <View style={{padding:10}} key={i}>
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('profile')}>
-                      <Image style={{width: 120, height: 150, borderRadius:5,backgroundColor:'grey'}} source={{uri: item.uri}} />
-                    </TouchableOpacity>
-                    <Text style={{color:'white'}}>{item.name}</Text>
-                  </View>
-                
-                )
-              })
       return (
-        
-        <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }}>
-        <ScrollView>
+        <ScrollView style={{backgroundColor:'black'}}>
 
-          <View style={{ flex: 1, flexDirection:'column', alignItems: 'flex-start', backgroundColor:'black'}}>              
-            <ScrollView horizontal>            
-                {images}
-            </ScrollView>
-          </View>
-
-
-          <View style={{flex: 1, flexDirection:'column', alignItems: 'flex-start', backgroundColor:'black'}}>
-            <Text style={{color:'white'}}>Continue Watching</Text> 
-            <ScrollView horizontal>
-                  {images1}
-            </ScrollView>
-          </View>
-
-          <View style={{ flex: 1, flexDirection:'row', alignItems: 'flex-start', backgroundColor:'black'}}>
-            <ScrollView horizontal>
-                {images2}
-            </ScrollView>
-          </View>
-
-          <View style={{ flex: 1, flexDirection:'row', alignItems: 'flex-start', backgroundColor:'black'}}>
-            <ScrollView horizontal>
-                {images3}
-            </ScrollView>
-          </View>
-
-          <View style={{ flex: 1, flexDirection:'row', alignItems: 'flex-start', backgroundColor:'black'}}>
-            <ScrollView horizontal>
-                {images4}
-            </ScrollView>
-          </View>
+          {featuredList}
 
         </ScrollView>
-        </SafeAreaView>
         
       );
     }

@@ -6,8 +6,9 @@ import Icons from 'react-native-vector-icons/Ionicons';
 
 import HomeScreen from './HomeScreen';
 import ExploreScreen from './ExploreScreen';
-import ProfileScreen from './ProfileScreen';
+import VideoProfileScreen from './VideoProfileScreen';
 import SettingsScreen from './SettingSreen';
+import VideoScreen from './VideoScreen';
 
 
 // const ExploreStack = createStackNavigator({
@@ -24,7 +25,8 @@ import SettingsScreen from './SettingSreen';
 
  const Home = createStackNavigator({
    HomeScreen:HomeScreen,
-   profile: ProfileScreen,
+   VideoProfileScreen: VideoProfileScreen,
+   VideoScreen: VideoScreen,
  },
  {
   initialRouteName: 'HomeScreen',
@@ -39,7 +41,6 @@ const TabNavigator = createBottomTabNavigator(
       Home: Home,
       Explore: ExploreScreen,
       Settings: SettingsScreen,
-    // Profile: ProfileScreen,
   },
   {
     defaultNavigationOptions: ({ navigation }) => ({
