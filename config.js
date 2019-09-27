@@ -1,5 +1,5 @@
 const config={
-    localhost_url:'http://192.168.1.34:8080',
+    localhost_url:'http://192.168.1.8:8080',
 
     }
     

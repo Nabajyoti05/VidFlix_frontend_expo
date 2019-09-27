@@ -13,13 +13,16 @@ const HomeScreen = createMaterialTopTabNavigator(
     Series: Series,
     TvShows: TvShows,
 },
+
 {
   tabBarOptions: {
       style:{
         backgroundColor: 'black'
       }
   },
+
 },
+
 {
   initialLayout : {
     height: Dimensions.get('window').height,

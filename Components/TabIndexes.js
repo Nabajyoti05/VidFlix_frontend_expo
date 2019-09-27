@@ -70,8 +70,8 @@ const TabNavigator = createBottomTabNavigator(
         style:{
           backgroundColor:'black'
         }
-    },
-  }
+    }
+  },
   );
   
 export default createAppContainer(TabNavigator);
