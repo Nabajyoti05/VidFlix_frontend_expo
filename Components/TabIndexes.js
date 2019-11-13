@@ -1,6 +1,7 @@
 import React from 'react';
-import { createBottomTabNavigator, createAppContainer, createStackNavigator } from 'react-navigation';
+import { createBottomTabNavigator, createAppContainer, createStackNavigator, } from 'react-navigation';
 import Icons from 'react-native-vector-icons/Ionicons';
+import {Platform, StatusBar } from 'react-native';
 
 // import HomeIconWithBadge from './Icons/HomeIcomWithBage';
 
@@ -70,6 +71,9 @@ const TabNavigator = createBottomTabNavigator(
         style:{
           backgroundColor:'black'
         }
+    },
+    style: {
+      paddingTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight
     }
   },
   );

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
+import { Text, View, StyleSheet, Image, TouchableOpacity, ScrollView,SafeAreaView } from 'react-native';
 import Icons from 'react-native-vector-icons/Ionicons';
 import { StackActions } from 'react-navigation';
 
@@ -45,6 +45,8 @@ class VideoProfileScreen extends React.Component {
       //     )
       //   })
       return (
+        
+        <SafeAreaView forceInset={{ top: 'always' }} style={{flex:1, justifyContent:'flex-start', backgroundColor:'black'}}>
         <ScrollView>
           <View style={styles.container}>
             <View style={{padding:0}}>
@@ -86,7 +88,8 @@ class VideoProfileScreen extends React.Component {
             </ScrollView>
           </View> */}
           </View>
-        </ScrollView>     
+        </ScrollView>   
+        </SafeAreaView>  
       );
     }
   }

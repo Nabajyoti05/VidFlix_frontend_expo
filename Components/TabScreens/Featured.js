@@ -56,8 +56,6 @@ class Featured extends React.Component {
 
         return (
 
-          
-
           <View style={{ flex: 1, flexDirection:'column', alignItems: 'flex-start', backgroundColor:'black', marginBottom:10, marginTop:10}} key={i}>              
             <ScrollView horizontal> 
             <FlatList
@@ -83,7 +81,7 @@ class Featured extends React.Component {
 
 
       return (
-          <SafeAreaView forceInset={{ top: 'always' }}  style={{flex:1, backgroundColor:'black'}}>
+          <SafeAreaView  style={{flex:1, backgroundColor:'black'}}>
         <ScrollView>
           <View style={{flex:1}}>
             {featuredList}
