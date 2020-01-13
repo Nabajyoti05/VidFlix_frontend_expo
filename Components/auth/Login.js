@@ -1,9 +1,8 @@
 import React from 'react';
 import { TextInput, View, Text, Button, StyleSheet, SafeAreaView, ScrollView, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import StackAuth from './auth/StackAuth';
 
-class SignupScreen extends React.Component {
+class LoginScreen extends React.Component {
   
     render() {
       return (
@@ -18,26 +17,11 @@ class SignupScreen extends React.Component {
                             textAlign: 'left',
                             color: '#eeeeee',
                             paddingBottom:5
-                            }}>Name</Text>
-
-              <TextInput style={{width:300, height: 50, borderRadius: 8, backgroundColor: '#404040', textDecorationColor:'white'}}/>
-
-            </View>
-            <View style={{flexDirection:'column', padding:10}}>
-
-              <Text style={{  fontSize: 18,
-                              fontWeight: 'normal',
-                              fontStyle: 'normal',
-                              textAlign: 'left',
-                              color: '#eeeeee',
-                              paddingBottom:5,
-
                             }}>Email</Text>
 
               <TextInput style={{width:300, height: 50, borderRadius: 8, backgroundColor: '#404040'}}/>
-              
-            </View>
 
+            </View>
             <View style={{flexDirection:'column', padding:10}}>
 
               <Text style={{  fontSize: 18,
@@ -53,21 +37,6 @@ class SignupScreen extends React.Component {
               
             </View>
 
-            <View style={{flexDirection:'column', padding:10}}>
-
-              <Text style={{  fontSize: 18,
-                              fontWeight: 'normal',
-                              fontStyle: 'normal',
-                              textAlign: 'left',
-                              color: '#eeeeee',
-                              paddingBottom:5,
-
-                            }}>Confirm Password</Text>
-
-              <TextInput style={{width:300, height: 50, borderRadius: 8, backgroundColor: '#404040'}}/>
-              
-            </View>
-
             <View style={{padding:20}}>
                 <LinearGradient colors={['#5a76fd', '#2de4af']} style={{width: 300,
                               height: 50,
@@ -76,19 +45,16 @@ class SignupScreen extends React.Component {
                               }}>
 
 
-                                <Text style={{width: 80,
+                                <Text style={{width: 60,
                                     fontFamily: 'Roboto',
                                     fontSize: 19,
                                     fontWeight: '500',
                                     fontStyle: 'normal',
                                     alignSelf:'center',
-                                    color: '#ffffff'}}>SIGN UP</Text>
+                                    color: '#ffffff'}}>LOGIN</Text>
 
 
                 </LinearGradient>
-            </View>
-            <View>
-              <StackAuth />
             </View>
         </ScrollView>
         </SafeAreaView>
@@ -105,4 +71,4 @@ class SignupScreen extends React.Component {
       }
   })
 
-  export default SignupScreen;
+  export default LoginScreen;

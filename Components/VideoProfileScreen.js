@@ -46,7 +46,7 @@ class VideoProfileScreen extends React.Component {
       //   })
       return (
         
-        <SafeAreaView forceInset={{ top: 'always' }} style={{flex:1, justifyContent:'flex-start', backgroundColor:'black'}}>
+        <SafeAreaView forceInset={{ top: 'always' }} style={{flex:1, justifyContent:'flex-start', backgroundColor:'white'}}>
         <ScrollView>
           <View style={styles.container}>
             <View style={{padding:0}}>
@@ -71,10 +71,10 @@ class VideoProfileScreen extends React.Component {
               <Text style={{fontSize:14, marginLeft:10}}>{this.state.VideoData.vid_desc}</Text>
             </View>
 
-            <View style={{padding:5}}>
+            {/* <View style={{padding:5}}>
               <Text style={{fontSize:14, marginLeft:10, fontWeight:'bold'}}>Starring</Text>
               <Text style={{fontSize:14, marginLeft:10}}>Saif Ali Khan, Nawazuddin Siddiqui, Radhika Apte, Pankaj Tripathi</Text>
-            </View>
+            </View> */}
 
             {/* <View style={{flex: 1, flexDirection:'row', alignItems: 'flex-start', backgroundColor:''}}>
             <ScrollView horizontal>

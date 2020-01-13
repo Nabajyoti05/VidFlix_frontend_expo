@@ -81,8 +81,9 @@ class Featured extends React.Component {
 
 
       return (
-          <SafeAreaView  style={{flex:1, backgroundColor:'black'}}>
+          <SafeAreaView style={{flex:1, backgroundColor:'black'}}>
         <ScrollView>
+         
           <View style={{flex:1}}>
             {featuredList}
           </View>

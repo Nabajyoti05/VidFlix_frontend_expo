@@ -19,7 +19,7 @@ export default class ProfileScreen extends PureComponent {
     return (
     <SafeAreaView>
         <Video
-          source={{ uri: this.props.navigation.state.params.video.mp4 }}
+          source={{ uri: this.props.navigation.state.params.video }}
           rate={1.0}
           volume={1.0}
           isMuted={false}

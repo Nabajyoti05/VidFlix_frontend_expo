@@ -1,7 +1,6 @@
 import React from 'react';
 import { TextInput, View, Text, Button, StyleSheet, SafeAreaView, ScrollView, Image } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import StackAuth from './auth/StackAuth';
 
 class SignupScreen extends React.Component {
   
@@ -86,9 +85,6 @@ class SignupScreen extends React.Component {
 
 
                 </LinearGradient>
-            </View>
-            <View>
-              <StackAuth />
             </View>
         </ScrollView>
         </SafeAreaView>

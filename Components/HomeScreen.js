@@ -19,10 +19,10 @@ const HomeScreen = createMaterialTopTabNavigator(
       style:{
         backgroundColor: 'black'
       }
-  },
-  style: {
-    paddingTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight
   }
+  // style: {
+  //   paddingTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight
+  // }
 
 },
 

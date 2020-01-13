@@ -4,16 +4,17 @@ import { createStackNavigator, createAppContainer, HeaderBackButton } from 'reac
 
 import Login from './Components/Login';
 import TabIndexes from './Components/TabIndexes';
+import AuthScreen from './Components/auth/StackAuth';
 // import Profile from './Components/ProfileScreen';
 
 const AppContainer = createStackNavigator(
     {
-        Login: Login,
+        AuthScreen: AuthScreen,
         TabIndex: TabIndexes,
-        // Profile: Profile
+        // Login: Login
     },
     {
-        initialRouteName: 'TabIndex',
+        initialRouteName: 'AuthScreen',
         headerMode: 'none',
         // headerLeft: <HeaderBackButton onPress={() => navigation.goBack(null)} />,
 
