@@ -5,6 +5,7 @@ import { createStackNavigator, createAppContainer, HeaderBackButton } from 'reac
 import Login from './Components/Login';
 import TabIndexes from './Components/TabIndexes';
 import AuthScreen from './Components/auth/StackAuth';
+import AuthComponent from './Components/auth/AuthComponent';
 // import Profile from './Components/ProfileScreen';
 
 const AppContainer = createStackNavigator(

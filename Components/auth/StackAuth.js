@@ -12,13 +12,9 @@ const AuthScreen = createMaterialTopTabNavigator(
 },
 // {
 //   navigationOptions: {
-//     headerBackground: (
-//       <Image
-//       width={100}
-//         style={{width:100, height: 100}}
-//         source={{uri: Logo}}
-//       />
-//     ),
+//     headerTitle: (
+//       <Image source={require('../../assets/Logo.jpg')}/>
+//   ),
 //   }
 // },
 
