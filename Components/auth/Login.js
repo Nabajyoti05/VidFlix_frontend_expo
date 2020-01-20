@@ -1,8 +1,11 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet, SafeAreaView, ScrollView, Image, TouchableOpacity } from 'react-native';
+import { View, Text, Button, StyleSheet, SafeAreaView, ScrollView, Image, TouchableOpacity, ToastAndroid } from 'react-native';
 import {TextField} from 'react-native-material-textfield';
+import { withNavigationFocus } from 'react-navigation';
 import { LinearGradient } from 'expo-linear-gradient';
 import config from '../../config';
+import { Ionicons } from '@expo/vector-icons';
+
 
 class LoginScreen extends React.Component {
 
@@ -10,14 +13,22 @@ class LoginScreen extends React.Component {
     email:'',
     password:'',
     emailValid: false,
-    passwordValid: false
+    passwordValid: false,
+    userDetails:[]
   }
 
   onEmailChanged = (value) => {
-    this.setState({
-      email: value,
-      emailValid: true
-    })
+    if(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value.trim())){
+      this.setState({
+        email: value,
+        emailValid: true
+      })
+    } else {
+      this.setState({
+        email: value,
+        emailValid: false
+      })
+    }
   }
 
 
@@ -35,25 +46,72 @@ class LoginScreen extends React.Component {
       pass: this.state.password
     }
 
-    fetch(config.localhost_url+'/login',{
-      method: 'POST',
-      headers: {
-          // 'x-Auth':this.props.token,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(login_data)
-    })
-    .then((response) => response.json())
-    .then((responseJson) => {
-      console.log("Response", responseJson)
-      alert("Logged In Successfully")
+    if(this.state.email.trim() === ''){
+      alert("Please enter Email Address")
+    } else if(!this.state.emailValid){
+      alert("Please enter valid Email Address")
+    } else if(this.state.password.trim() === ''){
+      alert("Please enter Password")
+    } else {
 
-    })
+        fetch(config.localhost_url+'/login',{
+          method: 'POST',
+          headers: {
+              // 'x-Auth':this.props.token,
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(login_data)
+        })
+        .then((response) => response.json())
+        .then((responseJson) => {
+          console.log(responseJson)
+          if(responseJson.data){
+            if(responseJson.match){
+              this.setState({
+                userDetails:responseJson.result,
+                email:'',
+                password:''
+              })
+              let userDetails=responseJson.userDetails;
+              this.props.navigation.navigate('TabIndex', {userDetails})
+              ToastAndroid.show("Logged In Successfullyy", ToastAndroid.BOTTOM)
+            } else {
+                this.setState({
+                  userDetails:[]
+                })
+              alert("Email Address/Password is incorrect")
+            }
+
+          } else {
+            if(responseJson.dbError){
+              
+              this.setState({
+                userDetails:[]
+              })
+
+              ToastAndroid.show("Internal Error! Please try again", ToastAndroid.LONG)
+            } else {
+              this.setState({
+                userDetails:[]
+              })
+
+              alert("Email not found! Please Sign Up")
+            }
+
+          }
+        })
+        .catch(err => {
+          console.log(err)
+          ToastAndroid.show("Connection Error! Please try again", ToastAndroid.BOTTOM)
+        })
+
+      }
   }
   
     render() {
 
       console.log("State", this.state);
+      console.log("Props", this.props);
 
       return (
         <SafeAreaView style={{flex:1}}>
@@ -81,20 +139,36 @@ class LoginScreen extends React.Component {
               />
 
             </View>
-            <View style={{flexDirection:'column', padding:10, paddingBottom:30}}>
+            <View style={{justifyContent:'space-between', flexDirection:'row', padding:10, paddingBottom:20}}>
+                <View>
 
-              <TextField 
-                onChangeText={this.onPasswordChanged}
-                label="Password"
-                secureTextEntry={true}
-                value={this.state.password}
-                lineWidth={2}
-                tintColor="white"
-                baseColor="white"
-                textColor="white"
-                containerStyle={{width:300, height: 50}}
-              />
-              
+                    <TextField 
+                      onChangeText={this.onPasswordChanged}
+                      label="Password"
+                      value={this.state.password}
+                      lineWidth={2}
+                      tintColor="white"
+                      baseColor="white"
+                      textColor="white"
+                      containerStyle={{width:300, height: 50}}
+                      secureTextEntry={this.state.showPassword ? false : true}
+                    />
+
+                </View>
+
+                    {this.state.showPassword ?
+                      <View style={{marginTop:40, right:20, position:'absolute'}}>
+                        <TouchableOpacity onPress={() => this.setState({showPassword: false})}>
+                          <Ionicons name="md-eye-off" color="#ebebeb" size={25}/>
+                        </TouchableOpacity>
+                      </View>
+                    :
+                      <View style={{marginTop:40, right:20, position:'absolute'}}>
+                        <TouchableOpacity onPress={() => this.setState({showPassword: true})}>
+                          <Ionicons name="md-eye" color="#ebebeb" size={25}/>
+                        </TouchableOpacity>
+                      </View>
+                    }
             </View>
 
             <View style={{padding:20}}>
@@ -133,4 +207,4 @@ class LoginScreen extends React.Component {
       }
   })
 
-  export default LoginScreen;
+  export default withNavigationFocus(LoginScreen);

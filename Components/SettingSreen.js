@@ -1,8 +1,24 @@
 import React from 'react';
-import { Text, View, StyleSheet} from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, ToastAndroid} from 'react-native';
 
 
 class SettingScreen extends React.Component {
+
+
+  state ={
+    user_id:''
+  }
+
+
+  onPressSignOut = () => {
+    this.setState({
+      user_id:''
+    })
+
+    ToastAndroid.show("Signed Out Successfully", ToastAndroid.BOTTOM)
+
+    this.props.navigation.navigate('Login')          
+  }
   
     render() {
       
@@ -39,6 +55,12 @@ class SettingScreen extends React.Component {
 
               <View style={styles.innerContainer}>
                 <Text style={styles.text}>Help</Text>
+              </View>
+
+              <View style={styles.innerContainer}>
+                <TouchableOpacity onPress={() => this.onPressSignOut()}>
+                <Text style={styles.text}>Sign Out</Text>
+                </TouchableOpacity>
               </View>
             </View>
             
