@@ -27,19 +27,21 @@ class SettingScreen extends React.Component {
             <Text style={styles.header}>Settings</Text>
 
             <View style={styles.outerContainer}>
-              <View style={styles.innerContainer}>
-                <Text style={styles.text}>Video Streaming Settings</Text>
-                <Text style={styles.textDecor}>480p</Text>
-              </View>
-
-              <View style={styles.innerContainer}>
-                <Text style={styles.text}>Notifications</Text>
-              </View>
 
               <View style={styles.innerContainer}>
                 <Text style={styles.text}>Signed in as</Text>
                 <Text style={styles.textDecor}>Naufil Shaikh</Text>
               </View>
+              
+                {/* <View style={styles.innerContainer}>
+                  <Text style={styles.text}>Video Streaming Settings</Text>
+                  <Text style={styles.textDecor}>480p</Text>
+                </View> */}
+
+              <View style={styles.innerContainer}>
+                <Text style={styles.text}>Notifications</Text>
+              </View>
+
 
               <View style={styles.innerContainer}>
                 <Text style={styles.text}>Clear Search History</Text>

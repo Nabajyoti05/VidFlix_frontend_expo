@@ -48,11 +48,11 @@ class Featured extends React.Component {
     render() {
 
 
-      let featuredList=null;
+      let MoviesList=null;
       
       if(this.state.renderItems.length !=0){
 
-      featuredList = this.state.renderItems.map((item,i) => {
+        MoviesList = this.state.renderItems.map((item,i) => {
 
         return (
 
@@ -64,9 +64,9 @@ class Featured extends React.Component {
               horizontal={true}
               data={item}
               renderItem={({item, index, separators}) => (
-                <View style={{padding:10, marginTop:10}} key={i}>
+                <View style={{padding:5, marginTop:10}} key={i}>
                   <TouchableOpacity onPress={() => this.onPressImage(item)}>
-                    <Image style={{width: 250, height: 170, borderRadius:5,backgroundColor:'grey'}} source={{uri: item.vid_thumbs}} />
+                    <Image style={{width: 130, height: 150, borderRadius:5,backgroundColor:'grey'}} source={{uri: item.vid_thumbs}} />
                     <Text style={{color:'white'}}>{item.vid_name}</Text>
                   </TouchableOpacity>
                 </View>
@@ -83,10 +83,10 @@ class Featured extends React.Component {
 
 
       return (
-          <SafeAreaView forceInset={{ top: 'always' }}  style={{flex:1, backgroundColor:'black'}}>
+          <SafeAreaView style={{flex:1, backgroundColor:'black'}}>
         <ScrollView>
           <View style={{flex:1}}>
-            {featuredList}
+            {MoviesList}
           </View>
 
         </ScrollView>
