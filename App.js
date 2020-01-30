@@ -7,16 +7,18 @@ import TabIndexes from './Components/TabIndexes';
 import AuthScreen from './Components/auth/StackAuth';
 // import AuthComponent from './Components/auth/AuthComponent';
 // import Profile from './Components/ProfileScreen';
+import CoverScreen from './Components/auth/coverScreen';
 import ExploreScreen from './Components/ExploreScreen';
 
 const AppContainer = createStackNavigator(
     {
+        CoverScreen:CoverScreen,
         AuthScreen: AuthScreen,
         TabIndex: TabIndexes,
         // ExploreScreen: ExploreScreen
     },
     {
-        initialRouteName: 'TabIndex',
+        initialRouteName: 'CoverScreen',
         headerMode: 'none',
         // headerLeft: <HeaderBackButton onPress={() => navigation.goBack(null)} />,
 

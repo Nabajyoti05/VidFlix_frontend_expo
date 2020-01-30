@@ -3,7 +3,6 @@ import {createMaterialTopTabNavigator, Image, StyleSheet} from 'react-navigation
 import { Dimensions,Platform } from 'react-native'
 import Login from './Login';
 import Signup from './Signup';
-import Logo from '../../assets/Logo.jpg';
 
 const AuthScreen = createMaterialTopTabNavigator(
   {

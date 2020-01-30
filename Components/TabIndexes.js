@@ -37,6 +37,17 @@ import VideoScreen from './VideoScreen';
 }
  )
 
+ Home.navigationOptions = ({ navigation }) => {
+  let tabBarVisible = true;
+  if (navigation.state.index > 1) {
+    tabBarVisible = false;
+  }
+
+  return {
+    tabBarVisible,
+  };
+};
+
 const TabNavigator = createBottomTabNavigator(
     {
       Home: Home,
@@ -62,14 +73,14 @@ const TabNavigator = createBottomTabNavigator(
         }
         // You can return any component that you like here!
         return <Icons style={{padding:20}} name={iconName} size={25} color={tintColor} />;
-      },
+      }
     }),
     tabBarOptions: {
         showIcon:true,
-        activeTintColor: 'tomato',
+        activeTintColor: '#eb754f',
         inactiveTintColor: 'white',
         style:{
-          backgroundColor:'#302d2d'
+          backgroundColor:'#121212'
         }
     },
     style: {

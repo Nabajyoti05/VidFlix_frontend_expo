@@ -1,18 +1,34 @@
 import React from 'react';
-import { Text, View, StyleSheet, Image, TouchableOpacity, ScrollView,SafeAreaView } from 'react-native';
+import { Text, View, StyleSheet, Image, TouchableOpacity, ScrollView,SafeAreaView, BackHandler } from 'react-native';
 import Icons from 'react-native-vector-icons/Ionicons';
-import { StackActions } from 'react-navigation';
+import { StackActions, withNavigationFocus } from 'react-navigation';
 
 class VideoProfileScreen extends React.Component {
   state={
-    VideoData:{}
+    VideoData:[]
   }
 
   componentDidMount(){
-    console.log("Props", this.props);
+    console.log("Props in Video Profile Screen", this.props);
+
+    const {params} =this.props.navigation.state
+    console.log("params", params);
     this.setState({
-      VideoData: this.props.navigation.state.params.item
+      VideoData: params.item
     })
+
+    this.backHandler = BackHandler.addEventListener('hardwareBackPress', this._handleBackHandler);
+  }
+
+  _handleBackHandler = () => {
+
+    this.props.navigation.navigate('HomeScreen');
+    return true;
+
+  }
+
+  componentWillUnmount() {
+    BackHandler.removeEventListener('hardwareBackPress', this._handleBackHandler);
   }
 
   onPressVideo=(video)=>{
@@ -46,47 +62,30 @@ class VideoProfileScreen extends React.Component {
       //   })
       return (
         
-        <SafeAreaView forceInset={{ top: 'always' }} style={{flex:1, justifyContent:'flex-start', backgroundColor:'white'}}>
+        <SafeAreaView style={{flex:1, justifyContent:'flex-start', backgroundColor:'#121212'}}>
         <ScrollView>
           <View style={styles.container}>
             <View style={{padding:0}}>
               <TouchableOpacity onPress={() => this.onPressVideo(this.state.VideoData.vid_location)}>
                   <Image style={{width:412, height: 280}} source={{uri: this.state.VideoData.vid_thumbs}} />
-                <View style={{position:'absolute', marginLeft:160, marginTop:90}}><Icons name="md-play-circle" style={{position:'absolute'}} size={100} color='red' /></View>
+                <View style={{position:'absolute', marginLeft:170, marginTop:90}}><Icons name="md-play-circle" style={{position:'absolute'}} size={80} color='white' /></View>
               </TouchableOpacity>
             </View>  
 
             <View style={{padding:5}}>
-              <Text style={{fontSize:18, marginLeft:10}}>{this.state.VideoData.vid_name}</Text>
-              <Text style={{fontSize:12, marginLeft:10}}>18+ | Series | 1 40 min </Text>
+              <Text style={{fontSize:18, marginLeft:10, color:'white'}}>{this.state.VideoData.vid_name}</Text>
+              <Text style={{fontSize:14, marginLeft:10, color:'#e3e3e3'}}>18+ | Series | 1 40 min </Text>
             </View>
 
-            <View style={{padding:5,flexDirection:'row'}}>
-              <Text style={{padding:5, borderColor:'grey',borderWidth:1, borderRadius:5, width:100, marginLeft:10, marginRight:37, textAlign:'center'}}>Watch trailer</Text>
-              <Text style={{padding:5, borderColor:'grey',borderWidth:1, borderRadius:5, width:100, marginRight:37, textAlign:'center'}}>Share</Text>
-              <Text style={{padding:5, borderColor:'grey',borderWidth:1, borderRadius:5, width:100, textAlign:'center'}}>Watch later</Text>
+            <View style={{padding:5, flexDirection:'row'}}>
+              <Text style={{padding:5, borderColor:'white',borderWidth:0.7, borderRadius:5, width:100, marginLeft:10, marginRight:37, textAlign:'center', color:'white'}}>Watch trailer</Text>
+              <Text style={{padding:5, borderColor:'white',borderWidth:0.7, borderRadius:5, width:100, marginRight:37, textAlign:'center', color:'white'}}>Share</Text>
+              <Text style={{padding:5, borderColor:'white',borderWidth:0.7, borderRadius:5, width:100, textAlign:'center', color:'white'}}>Watch later</Text>
             </View>
 
             <View style={{padding:5, alignItems:'center'}}>
-              <Text style={{fontSize:14, marginLeft:10}}>{this.state.VideoData.vid_desc}</Text>
+              <Text style={{fontSize:14, marginLeft:10 ,color:'white'}}>{this.state.VideoData.vid_desc}</Text>
             </View>
-
-            {/* <View style={{padding:5}}>
-              <Text style={{fontSize:14, marginLeft:10, fontWeight:'bold'}}>Starring</Text>
-              <Text style={{fontSize:14, marginLeft:10}}>Saif Ali Khan, Nawazuddin Siddiqui, Radhika Apte, Pankaj Tripathi</Text>
-            </View> */}
-
-            {/* <View style={{flex: 1, flexDirection:'row', alignItems: 'flex-start', backgroundColor:''}}>
-            <ScrollView horizontal>
-                  {images1}
-            </ScrollView>
-          </View>
-
-          <View style={{flex: 1, flexDirection:'row', alignItems: 'flex-start', backgroundColor:''}}>
-            <ScrollView horizontal>
-                  {images1}
-            </ScrollView>
-          </View> */}
           </View>
         </ScrollView>   
         </SafeAreaView>  
@@ -109,4 +108,4 @@ class VideoProfileScreen extends React.Component {
     }
   })
 
-  export default VideoProfileScreen;
+  export default withNavigationFocus(VideoProfileScreen);

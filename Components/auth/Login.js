@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet, SafeAreaView, ScrollView, Image, TouchableOpacity, ToastAndroid } from 'react-native';
+import { View, Text, Button, StyleSheet, SafeAreaView, ScrollView, Image, TouchableOpacity, ToastAndroid, AsyncStorage } from 'react-native';
 import {TextField} from 'react-native-material-textfield';
 import { withNavigationFocus } from 'react-navigation';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -16,6 +16,8 @@ class LoginScreen extends React.Component {
     passwordValid: false,
     userDetails:[]
   }
+
+  
 
   onEmailChanged = (value) => {
     if(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(value.trim())){
@@ -72,7 +74,14 @@ class LoginScreen extends React.Component {
                 email:'',
                 password:''
               })
-              let userDetails=responseJson.userDetails;
+
+              let token=responseJson.token
+              let userDetails=responseJson.result[0].users_id;
+
+              AsyncStorage.setItem("hometheaterUser", userDetails);
+
+              AsyncStorage.setItem("hometheaterToken", token);
+
               this.props.navigation.navigate('TabIndex', {userDetails})
               ToastAndroid.show("Logged In Successfullyy", ToastAndroid.BOTTOM)
             } else {
@@ -173,7 +182,7 @@ class LoginScreen extends React.Component {
 
             <View style={{padding:20}}>
               <TouchableOpacity onPress={() => this.onPressSubmit()}>
-                <LinearGradient colors={['#5a76fd', '#2de4af']} style={{width: 300,
+                <LinearGradient colors={['#eb754f', '#eb754f']} style={{width: 300,
                               height: 50,
                               borderRadius: 8,
                               justifyContent:'center'

@@ -97,7 +97,7 @@ class SignupScreen extends React.Component {
             if(responseJson.unique){
               if(responseJson.result.affectedRows === 1){
                 this.setState({
-                  user_id: responseJson.result.insertId,
+                    user_id: responseJson.result.insertId,
                     name:'',
                     email:'',
                     password:'',
@@ -105,7 +105,7 @@ class SignupScreen extends React.Component {
                 })
                 let user_id= responseJson.result.insertId
                 ToastAndroid.show("Signed Up Successfully", ToastAndroid.BOTTOM)
-                return this.props.navigation.navigate('TabIndex', {user_id})            
+                return this.props.navigation.navigate('Login', {user_id})            
               }
             } else {
               let email=this.state.email
@@ -241,7 +241,7 @@ class SignupScreen extends React.Component {
 
             <View style={{padding:20}}>
               <TouchableOpacity onPress={() => this.onPressSubmit()}>
-                <LinearGradient colors={['#5a76fd', '#2de4af']} style={{width: 300,
+                <LinearGradient colors={['#eb754f', '#eb754f']} style={{width: 300,
                               height: 50,
                               borderRadius: 8,
                               justifyContent:'center'

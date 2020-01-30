@@ -10,7 +10,6 @@ class Featured extends React.Component {
   }
 
   componentDidMount(){
-    console.log("CDM", config.localhost_url)
 
     return fetch(config.localhost_url+'/all-features-fetch', {
       method: 'GET',
@@ -64,10 +63,10 @@ class Featured extends React.Component {
               horizontal={true}
               data={item}
               renderItem={({item, index, separators}) => (
-                <View style={{padding:5, marginTop:10}} key={i}>
+                <View style={{padding:5, marginTop:10, flexDirection:'row', width:140}} key={i}>
                   <TouchableOpacity onPress={() => this.onPressImage(item)}>
                     <Image style={{width: 130, height: 150, borderRadius:5,backgroundColor:'grey'}} source={{uri: item.vid_thumbs}} />
-                    <Text style={{color:'white'}}>{item.vid_name}</Text>
+                    <Text style={{color:'white', flex:1, flexWrap:'wrap'}}>{item.vid_name}</Text>
                   </TouchableOpacity>
                 </View>
               )}
@@ -83,7 +82,7 @@ class Featured extends React.Component {
 
 
       return (
-          <SafeAreaView style={{flex:1, backgroundColor:'black'}}>
+          <SafeAreaView style={{flex:1, backgroundColor:'#121212'}}>
         <ScrollView>
           <View style={{flex:1}}>
             {tvShowsList}

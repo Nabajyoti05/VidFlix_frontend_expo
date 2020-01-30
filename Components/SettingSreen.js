@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, ToastAndroid} from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, ToastAndroid, AsyncStorage} from 'react-native';
 
 
 class SettingScreen extends React.Component {
@@ -15,9 +15,16 @@ class SettingScreen extends React.Component {
       user_id:''
     })
 
-    ToastAndroid.show("Signed Out Successfully", ToastAndroid.BOTTOM)
+    AsyncStorage.removeItem("hometheaterToken", (err, token) => {
+      if(err){
+        console.log("Error getting item", err)
+      } else {
+          ToastAndroid.show("Signed Out Successfully", ToastAndroid.BOTTOM)
+          this.props.navigation.navigate('Login')
+      }
+    })
 
-    this.props.navigation.navigate('Login')          
+             
   }
   
     render() {
