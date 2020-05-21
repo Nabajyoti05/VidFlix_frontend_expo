@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet, SafeAreaView, ScrollView, Image, TouchableOpacity, ToastAndroid, Alert} from 'react-native';
+import { View, Text, Button, StyleSheet, SafeAreaView, ScrollView, Image, TouchableOpacity, ToastAndroid, Alert, KeyboardAvoidingView} from 'react-native';
 import {TextField} from 'react-native-material-textfield';
 import { LinearGradient } from 'expo-linear-gradient';
 import config from '../../config';
@@ -141,6 +141,7 @@ class SignupScreen extends React.Component {
     render() {
       return (
         <SafeAreaView style={{flex:1}}>
+          <KeyboardAvoidingView style={{flex:1}}>
 
         <ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={{flexGrow:1, flexDirection:'column', justifyContent:'center', alignItems:'center', backgroundColor:'black'}}>
 
@@ -261,6 +262,7 @@ class SignupScreen extends React.Component {
               </TouchableOpacity>
             </View>
         </ScrollView>
+        </KeyboardAvoidingView>
         </SafeAreaView>
       );
     }
@@ -271,7 +273,7 @@ class SignupScreen extends React.Component {
         flex: 1,
         justifyContent: 'center', 
         alignItems: 'center', 
-        backgroundColor:'black',
+        backgroundColor:'#121212',
       }
   })
 

@@ -85,7 +85,7 @@ class Featured extends React.Component {
 
         carouselItems= (
 
-          <View style={{ flex: 1, flexDirection:'column', alignItems: 'flex-start', backgroundColor:'black', marginBottom:10, marginTop:10}}>              
+          <View style={{ flex: 1, flexDirection:'column', alignItems: 'flex-start', backgroundColor:'#121212', marginBottom:10, marginTop:10}}>              
             <ScrollView horizontal pagingEnabled 
                 onMomentumScrollEnd={this.setSelectedIndex}
                 ref={this._scrollRef}
@@ -119,7 +119,7 @@ class Featured extends React.Component {
         
         return (
           
-          <View style={{ flex: 1, flexDirection:'column', alignItems: 'flex-start', backgroundColor:'black', marginBottom:10, marginTop:10}} key={i}> 
+          <View style={{ flex: 1, flexDirection:'column', alignItems: 'flex-start', backgroundColor:'#121212', marginBottom:10, marginTop:10}} key={i}> 
             <Text style={{padding:5,color:'white', fontSize:18}}>{featname}</Text>
             <ScrollView horizontal> 
             <FlatList
@@ -128,7 +128,7 @@ class Featured extends React.Component {
               renderItem={({item, index, separators}) => (
                 <View style={{padding:5, marginTop:10, flexDirection:'row', width:140}} key={index}>
                   <TouchableOpacity onPress={() => this.onPressImage(item)}>
-                    <Image style={{width: 130, height: 150, borderRadius:5,backgroundColor:'grey'}} source={{uri: item.vid_thumbs}} />
+                    <Image style={{width: 130, height: 150, borderRadius:5,backgroundColor:'#121212'}} source={{uri: item.vid_thumbs}} />
                     <Text style={{color:'white',flex:1, flexWrap:'wrap', paddingTop:5}}>{item.vid_name}</Text>
                   </TouchableOpacity>
                 </View>

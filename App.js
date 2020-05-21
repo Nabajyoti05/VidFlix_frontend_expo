@@ -20,8 +20,15 @@ const AppContainer = createStackNavigator(
     {
         initialRouteName: 'CoverScreen',
         headerMode: 'none',
-        // headerLeft: <HeaderBackButton onPress={() => navigation.goBack(null)} />,
-
+        headerTitleAlign:'center',
+        title:'Hometheater',
+        defaultNavigationOptions:{
+            headerStyle: {
+                height: 20,
+                color:'black',
+                backgroundColor:'white'
+              }
+          }
     },
 );
 

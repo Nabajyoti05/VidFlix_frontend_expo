@@ -8,22 +8,31 @@ import TvShows from './TabScreens/TvShows';
 
 const HomeScreen = createMaterialTopTabNavigator(
   {
-    Featured: Featured,
+    Originals: Featured,
     Movies: Movies,
-    Series: Series,
-    TvShows: TvShows,
+    ShortFilms: Series,
+    Comedy : TvShows,
 },
-
 {
   tabBarOptions: {
       style:{
         backgroundColor: 'black'
+      },
+      'scrollEnabled': true,
+      'tabStyle': {
+        width: 120
+      },
+      'indicatorStyle': {
+        backgroundColor: '#eb754f'
+      },
+      activeTintColor: '#eb754f',
+      inactiveTintColor: 'white',
+      labelStyle:{
+        fontSize:14,
+        fontWeight:'500',
+
       }
   }
-  // style: {
-  //   paddingTop: Platform.OS === 'ios' ? 0 : StatusBar.currentHeight
-  // }
-
 },
 
 {
@@ -33,6 +42,7 @@ const HomeScreen = createMaterialTopTabNavigator(
 },
 
 },
+
 );
 
   export default HomeScreen;

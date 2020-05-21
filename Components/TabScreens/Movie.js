@@ -57,7 +57,7 @@ class Featured extends React.Component {
 
           
 
-          <View style={{ flex: 1, flexDirection:'column', alignItems: 'flex-start', backgroundColor:'black', marginBottom:10, marginTop:10}} key={i}>              
+          <View style={{ flex: 1, flexDirection:'column', alignItems: 'flex-start', backgroundColor:'#121212', marginBottom:10, marginTop:10}} key={i}>              
             <ScrollView horizontal> 
             <FlatList
               horizontal={true}

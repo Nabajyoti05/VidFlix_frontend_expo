@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { Video } from "expo-av";
 import { ScreenOrientation } from 'expo';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 const deviceWidth = Dimensions.get("window").width;
 const deviceHeight = Dimensions.get("window").height;
@@ -35,7 +36,7 @@ export default class ProfileScreen extends PureComponent {
   }
 
   onReady = () => {
-      ScreenOrientation.allowAsync(ScreenOrientation.Orientation.LANDSCAPE);
+      ScreenOrientation.lockAsync(ScreenOrientation.Orientation.LANDSCAPE);
       this._videoRef.playAsync();
   }
 
@@ -55,9 +56,9 @@ export default class ProfileScreen extends PureComponent {
     console.log("Video", this.props.navigation.state.params.video)
 
     return (
-    <SafeAreaView style={{flex:1, backgroundColor:'#121212', justifyContent:'center'}}>
+    // <SafeAreaView style={{flex:1, backgroundColor:'#121212', justifyContent:'center', alignItems:'center'}}>
 
-      <View style={{flex:1, justifyContent:'center', alignContent:'center'}}>
+      <View style={{flex:1, flexDirection:'row', justifyContent:'center', alignItems:'center', padding:1, backgroundColor:'#121212'}}>
           <Video
             ref={(ref) => this._videoRef = ref}
             source={{ uri: this.props.navigation.state.params.video }}
@@ -65,16 +66,15 @@ export default class ProfileScreen extends PureComponent {
             volume={1.0}
             isMuted={false}
             resizeMode="contain"
-            shouldPlay
+            shouldPlay={true}
             isLooping
             useNativeControls={true}
-            style={{ width: '100%', height: '100%' }}
+            style={{ width: deviceHeight, height: deviceWidth-30}}
             onReadyForDisplay={() => this.onReady()}
             onPlaybackStatusUpdate={(status) => this._onDidFinish(status)}
-            didj
           />
       </View>
-    </SafeAreaView>
+    // </SafeAreaView>
     );
   }
 }

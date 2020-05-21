@@ -10,6 +10,21 @@ class SettingScreen extends React.Component {
   }
 
 
+  componentDidMount(){
+    AsyncStorage.getItem("hometheaterUser", (err, userDetails) => {
+      if(err){
+        console.log("Error getting item", err)
+      } else {
+        if(userDetails !== null){
+          console.log("userDetails", userDetails)         
+        } else {
+          console.log("No userDetails")
+        }
+      }
+    })
+  }
+
+
   onPressSignOut = () => {
     this.setState({
       user_id:''

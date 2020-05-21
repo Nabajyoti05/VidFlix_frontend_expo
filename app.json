@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "VidFlix",
-    "slug": "Vidflix",
+    "name": "Hometheater",
+    "slug": "Hometheater",
     "privacy": "public",
     "sdkVersion": "34.0.0",
     "platforms": [
@@ -11,10 +11,11 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
+    // "icon": "./assets/Logo.png",
     "splash": {
-      "image": "./assets/CoverLogo.png",
+      // "image": "./assets/Logo.png",
       "resizeMode": "contain",
-      "backgroundColor": "#302d2d"
+      "backgroundColor": "#121212"
     },
     "androidStatusBar": {
       "backgroundColor": "#000000"

@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet, SafeAreaView, ScrollView, Image, TouchableOpacity, ToastAndroid, AsyncStorage } from 'react-native';
+import { View, Text, Button, StyleSheet, SafeAreaView, ScrollView, Image, TouchableOpacity, ToastAndroid, AsyncStorage, KeyboardAvoidingView } from 'react-native';
 import {TextField} from 'react-native-material-textfield';
 import { withNavigationFocus } from 'react-navigation';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -78,7 +78,7 @@ class LoginScreen extends React.Component {
               let token=responseJson.token
               let userDetails=responseJson.result[0].users_id;
 
-              AsyncStorage.setItem("hometheaterUser", userDetails);
+              AsyncStorage.setItem("hometheaterUser", userDetails); 
 
               AsyncStorage.setItem("hometheaterToken", token);
 
@@ -124,6 +124,7 @@ class LoginScreen extends React.Component {
 
       return (
         <SafeAreaView style={{flex:1}}>
+          <KeyboardAvoidingView style={{flex:1}}>
 
         <ScrollView keyboardShouldPersistTaps="handled" contentContainerStyle={{flexGrow:1, flexDirection:'column', justifyContent:'center', alignItems:'center', backgroundColor:'black'}}>
 
@@ -202,6 +203,7 @@ class LoginScreen extends React.Component {
               </TouchableOpacity>
             </View>
         </ScrollView>
+        </KeyboardAvoidingView>
         </SafeAreaView>
       );
     }
